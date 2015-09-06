@@ -32,6 +32,9 @@ curve(dnorm(x, mean(data[,2]), sd = sd(data[,2])), add = TRUE)
 
 #(d) Create a quantile-quantile plot (commonly called a QQ plot) for each variable. Include in your plot a line indicating perfect agreement,i.e. y = x. 
 #What could this QQ plot be used for?
+#Answer:
+#The quantile-quantile (q-q) plot is a graphical technique for determining if two data sets come from populations with a common distribution.
+#Or quantile-quantile plot can check whether one data set fits certain distribution (such as normal distribution) or not.
 qqnorm(data[,1])
 qqline(data[,1], datax = FALSE, distribution = qnorm)
 
@@ -45,3 +48,7 @@ qqline(norm.distribution, ddatax = FALSE, distribution = qnorm)
 
 #(e) Comment briefly on what you have learned about each variable. Include comparisons between x1 and x2 using location measures (mean, median, etc.),
 #spread measures (standard deviation), and the shape of the histograms. Qualitatively, does either variable appear to have come from a normal distribution? Why?
+#Answer:
+#x1 suits normal distribution
+#x2 has two peaks, don't fits normal distribution. Besides, x2 has higher deviation.
+#x1 from a normal distribution. Bacause the density of x1 fits normal distribution very well. But x2 does not.
