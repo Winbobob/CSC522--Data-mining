@@ -24,10 +24,10 @@ summary(data)
 #(c) Create a histogram for each variable using 10 bins. The scale of the
 #y-axis should be in terms of density. Also, fitting a density curve to the histogram,
 #In this case, we can simply use normal distribution.
-hist(data[,1], breaks = 10, freq = FALSE, main = "Histogram of Variable 1", xlab = "Variable 1", col = "beige")
+hist(data[,1], breaks = 10, freq = FALSE, main = "Histogram of Variable 1", xlim = c(0, 12), ylim = c(0.0, 0.3), xlab = "Variable 1", col = "beige")
 curve(dnorm(x, mean(data[,1]), sd = sd(data[,1])), add = TRUE)
 
-hist(data[,2], breaks = 10, freq = FALSE, main = "Histogram of Variable 2", xlab = "Variable 2", col = "beige")
+hist(data[,2], breaks = 9, freq = FALSE, main = "Histogram of Variable 2", xlim = c(-10, 20), ylim = c(0.00, 0.15), xlab = "Variable 2", col = "beige")
 curve(dnorm(x, mean(data[,2]), sd = sd(data[,2])), add = TRUE)
 
 #(d) Create a quantile-quantile plot (commonly called a QQ plot) for each variable. Include in your plot a line indicating perfect agreement,i.e. y = x. 
