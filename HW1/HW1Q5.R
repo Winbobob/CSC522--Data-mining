@@ -78,7 +78,7 @@ for (i in 1:nrow(diff.dist)) {
 
 #Euclidean distance
 ten.nearest.point.euc <- order(euc.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long, xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.euc,1], locations.matrix[ten.nearest.point.euc,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.euc[10],1]) ^ 2 ,
@@ -87,7 +87,7 @@ draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 
 #Mahalanobis distance
 ten.nearest.point.mahala <- order(mahala.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long, xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.mahala,1], locations.matrix[ten.nearest.point.mahala,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.mahala[10],1]) ^ 2,
@@ -97,7 +97,7 @@ draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 
 #City block metric (Manhattan distance)
 ten.nearest.point.city <- order(city.block.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long,  xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.city,1], locations.matrix[ten.nearest.point.city,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.city[10],1]) ^ 2,
@@ -106,7 +106,7 @@ draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 
 #Minkowski metric (for p=3)
 ten.nearest.point.minkowski <- order(Minkowski.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long, xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.minkowski,1], locations.matrix[ten.nearest.point.minkowski,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.minkowski[10],1]) ^ 2,
@@ -115,16 +115,16 @@ draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 
 #Chebyshev distance
 ten.nearest.point.Cheby <- order(Cheby.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long, xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.Cheby,1], locations.matrix[ten.nearest.point.Cheby,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.Cheby[10],1]) ^ 2,
                    (P[2] - locations.matrix[ten.nearest.point.Cheby[10],2]) ^ 2))
 draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 
-#Cosine distance
+#Cosine distance (http://reference.wolfram.com/language/ref/CosineDistance.html)
 ten.nearest.point.cos <- order(cos.dist, decreasing = FALSE)[1:10]
-plot(locations$lat, locations$long, xlab = "Latitude", ylab = "Longitude", col = "black")
+plot(locations$lat, locations$long,  xlim = c(37.4, 37.7), ylim = c(-78.8, -79.1), asp = 1, xlab = "Latitude", ylab = "Longitude", col = "black")
 points(P[1], P[2], col = "red", pch = "X")
 points(locations.matrix[ten.nearest.point.cos,1], locations.matrix[ten.nearest.point.cos,2], col = "red")
 radius <- sqrt(sum((P[1] - locations.matrix[ten.nearest.point.cos[10],1]) ^ 2,
@@ -134,4 +134,4 @@ draw.circle(P[1], P[2], radius, nv=100, border="blue", col=NA,lty=1,lwd=1)
 #(d.b.b) Verify if the set of points is the same across all the distance
 #measures.
 #No.
-identical(ten.nearest.point.Cheby, ten.nearest.point.city)
+identical(sort(ten.nearest.point.euc), sort(ten.nearest.point.minkowski))
