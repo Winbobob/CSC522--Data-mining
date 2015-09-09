@@ -49,13 +49,15 @@ D <- A %*% B
 
 #(h) X = [1, 2, 3, 4]T, Y = [9, 6, 4, 1]T. Computing the covariance matrix of
 #X and Y in one function, and calculating the result by basic operations (without using that function).
-X <- c(1, 2, 3, 4)
-dim(X) <- c(4, 1)
-Y <- c(9, 6, 4, 1)
-dim(Y) <- c(4, 1)
-cov(X, Y)
+ X <- c(1, 2, 3, 4)
+ dim(X) <- c(4, 1)
+ Y <- c(9, 6, 4, 1)
+ dim(Y) <- c(4, 1)
+ matrix(c(cov(X),cov(X,Y),cov(X,Y),cov(Y)),nrow = 2,ncol = 2)
 #================
 sum((X - mean(X)) * (Y - mean(Y))) / 3
+sum((X - mean(X)) * (X - mean(X))) / 3
+sum((Y - mean(Y)) * (Y - mean(Y))) / 3
 
 #(i) Verifying the equation in X: x2¯ = (x¯^2+σ^2(x)), where σ(x) is the estimate of the standard deviation.
 left <- mean(X ^ 2)

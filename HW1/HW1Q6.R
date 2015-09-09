@@ -10,8 +10,13 @@ stddev.1 <- round(sd(data[,1]), 3)
 stddev.2 <- round(sd(data[,2]), 3)
 
 #the maximum likelihood of deviation and the range (i.e. the minimum and maximum)
-#??????????????????????????????
-#http://www.ms.uky.edu/~mai/sta321/MLEexample.pdf
+#http://mathworld.wolfram.com/MaximumLikelihood.html
+#Since the standard deviation of x1 is close to 1. x1 fits normal distribution.
+#For a normal distribution, the maximum likelihood standard deviation is the sample standard deviation.
+maximun.likelihood.x1 <- round(sd(data[[1]]) ,3)
+maximun.likelihood.x1
+
+#=========================
 range.1 <- range(data[,1])
 range.2 <- range(data[,2])
 
@@ -25,10 +30,10 @@ summary(data)
 #(c) Create a histogram for each variable using 10 bins. The scale of the
 #y-axis should be in terms of density. Also, fitting a density curve to the histogram,
 #In this case, we can simply use normal distribution.
-hist(data[,1], breaks = 10, freq = FALSE, main = "Histogram of Variable 1", xlim = c(0, 12), ylim = c(0.0, 0.3), xlab = "Variable 1", col = "beige")
+hist(data[,1], breaks = seq(min(data[, 1]),max(data[, 1]),l=11), freq = FALSE, main = "Histogram of Variable 1", xlim = c(0, 12), ylim = c(0.0, 0.3), xlab = "Variable 1", col = "beige")
 curve(dnorm(x, mean(data[,1]), sd = sd(data[,1])), add = TRUE)
 
-hist(data[,2], breaks = 9, freq = FALSE, main = "Histogram of Variable 2", xlim = c(-10, 20), ylim = c(0.00, 0.15), xlab = "Variable 2", col = "beige")
+hist(data[,2], breaks = seq(min(data[, 2]),max(data[, 2]),l=11), freq = FALSE, main = "Histogram of Variable 2", xlim = c(-10, 20), ylim = c(0.00, 0.15), xlab = "Variable 2", col = "beige")
 curve(dnorm(x, mean(data[,2]), sd = sd(data[,2])), add = TRUE)
 
 #(d) Create a quantile-quantile plot (commonly called a QQ plot) for each variable. Include in your plot a line indicating perfect agreement,i.e. y = x. 
