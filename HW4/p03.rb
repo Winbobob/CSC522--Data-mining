@@ -42,7 +42,7 @@ one_itemset_keys.each do |key1|
 end
 temp_hash.delete_if {|key, value| value < mini_supp}
 two_itemsets = temp_hash.reject{|key| !key.include?','} #hash
-#["1,3", "1,47", "5,10", "13,32", "13,37", "17,33", "19,4", "19,36", "23,6", "28,29", "32,37"]
+#["1,3", "1,47", "5,10", "13,32", "13,37", "17,33", "19,4", "19,36", "2,20", "23,6", "28,29", "32,37"]
 two_itemset_keys = two_itemsets.keys #array
 
 
